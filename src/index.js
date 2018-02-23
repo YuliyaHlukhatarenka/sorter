@@ -1,10 +1,11 @@
 class Sorter {
   constructor() {
-    // your implementation
+    this.Array = [];
+  return this;
   }
 
   add(element) {
-    // your implementation
+  this.Array[this.Array.length] = element;
   }
 
   at(index) {
@@ -12,20 +13,32 @@ class Sorter {
   }
 
   get length() {
-    // your implementation
+    return this.Array.length;
   }
 
   toArray() {
-    // your implementation
+    return this.Array;
   }
 
   sort(indices) {
-    // your implementation
+    var i,j,min,temp;
+    for ( i=0; i< indices.length; i++){
+      min = i;
+        for (j=i+1; j< indices.length; j++){
+          if (this.Array[indices[j]]<this.Array[indices[min]]) {min=j};
+        }
+      temp = this.Array[indices[i]];
+      this.Array[indices[i]] = this.Array[indices[min]] ;
+      this.Array[indices[min]] = temp;
+
+    }
+    return this.Array;
   }
 
   setComparator(compareFunction) {
-    // your implementation
+    return compareFunction (this.Array);
   }
+
 }
 
 module.exports = Sorter;
